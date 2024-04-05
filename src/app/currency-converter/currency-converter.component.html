@@ -1,0 +1,61 @@
+<div class = "content">
+  <div class="card container text-center" >
+    <div class="card-body">
+        <button type="button" (click)="openModal()"><span class="badge rounded-pill text-bg-primary">+</span></button>
+
+      <div class="row">
+        <div class="col-xs-6">
+          <div class="src">
+          {{converter.selectedFromCountry}}  
+          </div>
+          <input type="number" id="input_currency" value="{{from_amount_value}}" [(ngModel)]="from_amount_value"  (change)="convertToValue()">
+        </div>
+        <div class="col-xs-6">
+          <div class="src">
+          {{converter.selectedToCountry}}
+        </div>  
+          <input type="number" id="output_currency" value="{{to_amount_value}}" [(ngModel)]="to_amount_value" (change)="convertFromValue()">
+        </div>
+      <div class="result-from">
+        {{result}}
+      </div>
+      </div>
+      
+      <!-- The Modal -->
+      <div class="modal" id="myModal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+      
+            <!-- Modal Header -->
+            <div class="modal-header">
+              <h4 class="modal-title" font-weight="bold">Select Currencies</h4>
+              <button type="button" class="btn-close" (click)="closeModal()" data-bs-dismiss="modal"></button>
+            </div>
+      
+            <!-- Modal body -->
+            <div class="modal-body">
+              <div class="form-group">
+                <select class="form-control" [(ngModel)]="originalFromCountry" name="selectedFromCountry" id="from_country">
+                    <option *ngFor="let from_country of countries" [ngValue]="from_country">{{from_country}}</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <select class="form-control" [(ngModel)]="originalToCountry" name="selectedToCountry" id="to_country">
+                  <option *ngFor="let to_country of countries" [ngValue]="to_country">{{to_country}}</option>
+                </select>
+              </div>
+            </div>
+              
+      
+            <!-- Modal footer -->
+            <div class="modal-footer">
+              <button type="button" class="btn btn-success" (click)="selected();closeModal()" data-bs-dismiss="modal">Ok</button>
+              <button type="button" class="btn btn-danger" (click)="closeModal()" data-bs-dismiss="modal">Close</button>
+            </div>
+      
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

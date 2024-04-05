@@ -1,0 +1,43 @@
+
+<div class = "content">
+  <div class="card container text-center" >
+    <div class="card-body">
+        <div class="row justify-content-md-center">
+          <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+            <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked (change)="setFilter('All')">
+            <label class="btn btn-outline-secondary" for="btnradio1">All</label>
+          
+            <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off" (change)="setFilter('Pending')">
+            <label class="btn btn-outline-secondary" for="btnradio2">Pending</label>
+          
+            <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off" (change)="setFilter('Completed')">
+            <label class="btn btn-outline-secondary" for="btnradio3">Completed</label>
+          </div>
+          
+          <div class="table-responsive-sm">
+            <table class="table">
+              <tbody>
+                <tr *ngFor="let todo of todos; let i = index;">
+                  <td>
+                    <input name="task" class="strikethrough" value="1" type="checkbox" [(ngModel)]="todo.isCompleted" (change)="done(i)">
+                  <label for="task">{{todo.name}}</label></td>
+                  <td style="color: black" (click)="removeTodo(i)">X</td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="input-group mb-3">
+              <input type="text" class="form-control" placeholder="Add todo" aria-label="Add todo" aria-describedby="button-addon2" [(ngModel)]="newTodo">
+              <button class="btn btn-outline-secondary" type="button" id="button-addon2" (click)="saveTodo()">Add</button>
+            </div>
+
+          </div> 
+        </div>
+    </div>
+  </div>
+</div>
+
+      
+    
+    
+    
+    
